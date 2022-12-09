@@ -23,8 +23,9 @@ class Current extends Account{
         System.out.println("Enter the amount to deposit:");
         balance += s.nextInt();
 
-        if (balance < 500){
-            System.out.println("500 INR service charge. Account balance falls below minumum required balance 500 INR");
+        if (balance < 1000){
+            System.out.println("500 INR service charge. Account balance falls below minumum required balance 1000 INR");
+            balance-=500;
         }
     }
     void display (){
@@ -37,14 +38,17 @@ class Current extends Account{
         with = s.nextInt();
 
         if (with > balance){
-            System.out.println("Balance is less than withdraw amounth!");
+            System.out.println("Balance is less than withdraw amount!");
         }
         else{
             balance -= with;
         }
-        if (balance < 500){
-            System.out.println("500 INR service charge. Account balance falls below minumum required balance 500 INR");
+
+        if (balance < 1000){
+            System.out.println("500 INR service charge. Account balance falls below minumum required balance 1000 INR");
+            balance-=500;
         }
+        
     }
 
 }
