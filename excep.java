@@ -1,3 +1,4 @@
+import java.lang.*;
 import java.util.*;
 
 class WrongAgeException extends Exception{
@@ -6,7 +7,7 @@ class WrongAgeException extends Exception{
         msg=x;
     }
     public String toString(){
-        return msg;
+        return "Exception handled succcessfully. "+msg;
     }
 }
 
@@ -20,8 +21,8 @@ class Father{
         System.out.println("Enter father's age:");
         f_age = s.nextInt();
 
-        if (f_age < 0){
-            throw new WrongAgeException("Father age < 0");
+        if (f_age <= 0){
+            throw new WrongAgeException("Father's age < 0");
         }
     }
 
@@ -41,29 +42,30 @@ class Son extends Father{
         s_age = s.nextInt();
 
         if (s_age < 0){
-            throw new WrongAgeException("Son age < 0");
+            throw new WrongAgeException("Son's age < 0");
         }
         else if (s_age > f_age){
-            throw new WrongAgeException("Son age is > that father's age!");
-        }    
+            throw new WrongAgeException("Son's age is > than father's age!");
+        }  
+        else if (s_age == f_age){
+            throw new WrongAgeException("Son's age is = to father's age!");
+        }  
     }
     
     void display(){
-        System.out.println("Father age: "+f_age);
-        System.out.println("Son age: "+s_age);
+        System.out.println("Father's age: "+f_age);
+        System.out.println("Son's age: "+s_age);
     }
 }
 
 class excep{
     public static void main(String[] args) {
         try{
-            Father f = new Father();
-            f.display();
             Son s = new Son();
             s.display();
         }
         catch (WrongAgeException wae){
-            System.out.println(wae);;
+            System.out.println(wae);
         }
     }
 }
